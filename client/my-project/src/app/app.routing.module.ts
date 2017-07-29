@@ -2,11 +2,10 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent }   from './app.component';
+import { UserComponent }  from './user/user.component';
 
 const routes: Routes = [
-    // { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: '',  component: AppComponent },
-    // { path: 'add',  component: AddImageComponent },
+    { path: '',  component: UserComponent }
 
 ];
 @NgModule({

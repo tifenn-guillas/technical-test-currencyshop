@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     /**
      * @Route("user")
-     * @Method({"GET"})
+     * @Method({"GET", "OPTIONS"})
      */
     public function getUsersAction(Request $request)
     {
@@ -23,15 +23,19 @@ class UserController extends Controller
         foreach ($users as $user) {
             $usersList[] = $user->toArray();
         }
+
         return new Response(json_encode($usersList));
     }
 
     /**
      * @Route("user")
-     * @Method({"POST"})
+     * @Method({"POST", "OPTIONS"})
      */
     public function addUserAction(Request $request)
     {
+        $data = json_decode($request->getContent(), true);
+        $request->request->replace($data);
+
         $em = $this->getDoctrine()->getManager();
         $user = new User();
         $user->setFirstname($request->request->get('firstname'));
@@ -39,6 +43,7 @@ class UserController extends Controller
         $user->setEmail($request->request->get('email'));
         $em->persist($user);
         $em->flush();
+
         return new Response(json_encode($user->toArray()));
     }
 }
