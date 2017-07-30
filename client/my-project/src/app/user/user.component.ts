@@ -28,13 +28,9 @@ export class UserComponent implements OnInit {
     }
 
     public getUsers() {
-        this.userService
-            .getUsers()
-            .subscribe(
-                (users) => {
-                    this.users = users;
-                }
-            );
+        this.userService.getUsers().subscribe(
+            users => this.users = users
+        );
     }
 
     public openModal(addUser: TemplateRef<any>) {
@@ -47,12 +43,8 @@ export class UserComponent implements OnInit {
     }
 
     public onSubmit() {
-        this.userService
-            .addUser(this.newUser)
-            .subscribe(
-                (user) => {
-                    this.getUsers();
-                }
-            );
+        this.userService.addUser(this.newUser).subscribe(
+            response => this.getUsers()
+        );
     }
 }
