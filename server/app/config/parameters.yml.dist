@@ -2,6 +2,9 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
+    cors_origin_dev: 'http://localhost:4200'
+    cors_origin_prod: '*'
+
     database_host:     container_mysql
     database_port:     ~
     database_name:     symfony

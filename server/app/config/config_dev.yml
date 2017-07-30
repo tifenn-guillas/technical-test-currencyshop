@@ -43,3 +43,9 @@ monolog:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+# Nelmio CORS
+nelmio_cors:
+    paths:
+        '^/user':
+            allow_origin: ["%cors_origin_dev%"]

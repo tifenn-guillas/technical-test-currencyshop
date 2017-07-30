@@ -25,3 +25,9 @@ monolog:
             level: debug
         console:
             type:  console
+
+# Nelmio CORS
+nelmio_cors:
+    paths:
+        '^/user':
+            allow_origin: ["%cors_origin_prod%"]
