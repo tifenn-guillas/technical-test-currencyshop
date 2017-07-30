@@ -15,7 +15,7 @@ services:
       - mysql:container_mysql
     ports:
       - 80:80
-      - 4200:4200
+      - 9000:9000
     volumes:
       - ./docker/conf/supervisor/conf.d:/etc/supervisor/conf.d
       - ./docker/conf/nginx:/etc/nginx
