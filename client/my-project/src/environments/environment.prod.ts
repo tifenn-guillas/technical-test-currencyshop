@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost'  // TODO: change url
+    apiUrl: 'http://localhost:9000/app_dev.php'
 };
