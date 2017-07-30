@@ -1,16 +1,8 @@
 version: '3'
 services:
-#  angular:
-#    image: dopsyng_angular
-#    container_name: angular
-#    ports:
-#      - 4200:4200
-#    volumes:
-#      - ./client:/var/www/html
-
-  php7:
-    image: dopsyng_php7
-    container_name: php7
+  app:
+    image: app
+    container_name: app
     links:
       - mysql:container_mysql
     ports:

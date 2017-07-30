@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
 
-  apiUrl: 'http://localhost/app_dev.php'
+  apiUrl: 'http://localhost:9000/app_dev.php'
 };
