@@ -38,12 +38,31 @@ class UserController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $user = new User();
-        $user->setFirstname($request->request->get('firstname'));
-        $user->setLastname($request->request->get('lastname'));
-        $user->setEmail($request->request->get('email'));
-        $em->persist($user);
-        $em->flush();
+        if ($this->checkName($request->request->get('firstname'), $request->request->get('lastname')) and
+            $this->checkEmail($request->request->get('email')))
+        {
+            $user->setFirstname($request->request->get('firstname'));
+            $user->setLastname($request->request->get('lastname'));
+            $user->setEmail($request->request->get('email'));
+            $em->persist($user);
+            $em->flush();
+            return new Response(json_encode(array('valid' => $user->toArray())));
+        }
+        return new Response(json_encode(array('error' => 'User details not valid')));
 
-        return new Response(json_encode($user->toArray()));
+
+    }
+
+    private function checkName($firstname, $lastname) {
+        if (!preg_match("/^[a-zA-Z\s-']*$/", $firstname) or !preg_match("/^[a-zA-Z\s-']*$/", $lastname)) {
+            return false;
+        }
+        return true;
+    }
+    private function checkEmail($email) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+        return true;
     }
 }

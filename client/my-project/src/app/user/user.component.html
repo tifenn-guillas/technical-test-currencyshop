@@ -6,6 +6,19 @@
 
 <button class="btn btn-success pull-right" (click)="openModal(addUser)">New user</button>
 
+<table *ngIf="users.length > 0" class="table table-striped table-bordered table-hover table-responsive">
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+    </tr>
+    <tr *ngFor="let user of users">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+    </tr>
+</table>
+
 <ng-template #addUser>
     <div class="modal-header">
         <h4 class="modal-title pull-left">Add user</h4>
@@ -56,16 +69,3 @@
         </form>
     </div>
 </ng-template>
-
-<table *ngIf="users.length > 0" class="table table-striped table-bordered table-hover table-responsive">
-    <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-    </tr>
-    <tr *ngFor="let user of users">
-        <td>{{ user.firstname }}</td>
-        <td>{{ user.lastname }}</td>
-        <td>{{ user.email }}</td>
-    </tr>
-</table>

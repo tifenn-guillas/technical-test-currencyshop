@@ -33,9 +33,9 @@ export class UserComponent implements OnInit {
         );
     }
 
-    public openModal(addUser: TemplateRef<any>) {
+    public openModal(modal: TemplateRef<any>) {
         this.initNewUser();
-        this.modalRef = this.modalService.show(addUser);
+        this.modalRef = this.modalService.show(modal);
     }
 
     public initNewUser() {
@@ -44,7 +44,16 @@ export class UserComponent implements OnInit {
 
     public onSubmit() {
         this.userService.addUser(this.newUser).subscribe(
-            response => this.getUsers()
+            response => {
+                console.log(response);
+                if ('error' in response) {
+                    alert('User details not valid.');
+                    console.log('error');
+                }
+                else {
+                    this.getUsers();
+                }
+            }
         );
     }
 }
