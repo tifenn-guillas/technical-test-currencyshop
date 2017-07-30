@@ -7,7 +7,6 @@ import { ModalModule } from 'ngx-bootstrap';
 
 import { AppRoutingModule } from './app.routing.module';
 
-import { ConfigService } from './core/config.service';
 import { AppComponent } from './app.component';
 import { UserService } from './user/user.service';
 import { UserComponent } from './user/user.component';
@@ -24,7 +23,7 @@ import { UserComponent } from './user/user.component';
     ModalModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [ConfigService, UserService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

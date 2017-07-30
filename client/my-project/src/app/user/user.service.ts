@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { environment } from 'environments/environment';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-import { ConfigService } from '../core/config.service';
 import { User } from './user';
 
 @Injectable()
 export class UserService {
-    private userUrl = this.config.apiUrl + '/user';
+    private userUrl = environment.apiUrl + '/user';
 
     constructor(
-        private http: Http,
-        private config: ConfigService
+        private http: Http
     ) { }
 
     public getUsers(): Observable<User[]> {

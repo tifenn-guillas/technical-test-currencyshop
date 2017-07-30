@@ -51,8 +51,7 @@
             </div>
             <div class="text-center">
                 <button (click)="modalRef.hide()" type="button" class="btn btn-danger">Cancel</button>
-                <button type="submit" class="btn btn-success">Save</button>
-                <!--[disabled]="!addForm.valid"-->
+                <button type="submit" [disabled]="!addForm.valid" class="btn btn-success">Save</button>
             </div>
         </form>
     </div>
