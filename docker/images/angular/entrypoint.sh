@@ -13,7 +13,13 @@ init() {
 
 run() {
     cd my-project
-    ng serve --host 0.0.0.0
+    #ng serve --host 0.0.0.0
+    nginx -g "daemon off;"
+}
+
+build() {
+    cd my-project
+    ng build --prod
 }
 
 case "$1" in
@@ -28,6 +34,10 @@ case "$1" in
 "init")
     echo "Initialization"
     init
+    ;;
+"build")
+    echo "Initialization"
+    build
     ;;
 *)
     echo "Custom command : $@"
